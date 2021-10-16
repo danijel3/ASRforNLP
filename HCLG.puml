@@ -1,0 +1,25 @@
+@startuml
+
+left to right direction
+
+
+audio --> [Ekstrakcja cech]
+
+[Ekstrakcja cech] --> [Model akustyczny]
+
+
+node WFST {
+	[Model akustyczny] --> [H]: P(senonów)
+	[H] --> [C]: trifony
+	[C] --> [L]: fonemy
+	[L] --> [G]: wyrazy
+}
+
+interface "Model języka" as LM
+LM ..> [G]
+Gramatyka ..> [G]
+
+[G] --> tekst
+
+
+@enduml
